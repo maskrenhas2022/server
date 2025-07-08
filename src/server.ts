@@ -12,6 +12,7 @@ import{
 
 
 import {fastifyCors} from '@fastify/cors'
+import { getRoomsRoute } from "./http/routes/get-rooms.ts"
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -27,6 +28,8 @@ app.setValidatorCompiler(validatorCompiler)
 app.get('/health', () =>{
     return 'MASKRENHAS OK'
 })
+
+app.register(getRoomsRoute)
 
 
 app.listen({ port: process.env.PORT ? Number(process.env.PORT) : 3333}).then( () =>{
