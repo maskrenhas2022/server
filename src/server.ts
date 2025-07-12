@@ -1,18 +1,14 @@
 
+import { fastify } from 'fastify'
 
-import { fastify } from "fastify"
-import{
 
-    serializerCompiler,
-    validatorCompiler,
+import {
+
+  serializerCompiler,
+  validatorCompiler,
   type ZodTypeProvider,
-
-
 } from 'fastify-type-provider-zod'
-
-
-import {fastifyCors} from '@fastify/cors'
-import { getRoomsRoute } from "./http/routes/get-rooms.ts"
+import fastifyCors from '@fastify/cors'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -25,13 +21,14 @@ origin: 'http://localhost:5173',
 app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
 
-app.get('/health', () =>{
-    return 'MASKRENHAS OK'
-})
-
-app.register(getRoomsRoute)
+app.get('/mask', () => {
+    return 'MASKRENHAS INFORMATICA SISTEMAS LTDA '
+} )
 
 
-app.listen({ port: process.env.PORT ? Number(process.env.PORT) : 3333}).then( () =>{
-  
-})
+app.listen( {  port:3333 }).then(() => {
+    console.log('Maskrenhas Informática Servidor running')
+
+
+
+    })
