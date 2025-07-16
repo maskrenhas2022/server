@@ -1,0 +1,14 @@
+# Variables
+
+@baseUrl = http://localhost:3333
+
+
+# mask check
+GET {{baseUrl}}/mask
+
+
+############
+
+# Get rooms
+GET  {{baseUrl}}/rooms
+
