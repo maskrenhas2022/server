@@ -6,6 +6,7 @@ import{
   validatorCompiler,
   type ZodTypeProvider
 } from 'fastify-type-provider-zod';
+import { getRoomsRoute } from './http/routes/get-rooms.ts';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -21,6 +22,8 @@ app.setValidatorCompiler(validatorCompiler);
 app.get('/mask', () => {
   return 'MOTHERFUCKER';
 });
+
+app.register(getRoomsRoute)
 
 app.listen({port:3333}).then(() => {
   console.log('MASKRENHAS Servidor rodando')
